@@ -18,7 +18,7 @@ c.execute("""CREATE TABLE admin_credentials (
 
 # Insert data into the admin_credentials table
 admin_insert = [
-    ('angelica', '123'),
+    ('angelica', 'princess'),
     ('tracy', 'superman')
 ]
 
