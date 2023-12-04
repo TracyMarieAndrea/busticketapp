@@ -16,11 +16,10 @@ c.execute("""CREATE TABLE admin_credentials (
     )
     """)
 
-
 # Insert data into the admin_credentials table
 admin_insert = [
     ('angelica', '123'),
-    ('tracy', 'babi')
+    ('tracy', 'superman')
 ]
 
 for data in admin_insert:
