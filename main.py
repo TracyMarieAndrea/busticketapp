@@ -68,6 +68,7 @@ password_entry.place(rely=0.55,relx=0.60,width=230,height=30)
 login_btn = tk.Button(text="LOGIN",background="#52ACA1",border=0,command=login)
 login_btn.pack(pady=10)
 login_btn.place(rely=0.70,relx=0.60,height=25,width=230)
+
 #Create a canvas
 canvas= Canvas(window, width= 600, height= 600)
 canvas.pack()

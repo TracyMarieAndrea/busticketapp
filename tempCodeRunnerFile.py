@@ -1,1 +1,2 @@
-bus_no_label.place(rely=0.35,relx=0.60)
+bottomframe = Frame(window)
+        bottomframe.pack()
