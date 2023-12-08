@@ -6,6 +6,8 @@ from dashboard import dashboard
 import sqlite3
 
 
+#test git
+
 window = tk.Tk()
 window.title('Welcome')
 width = window.winfo_screenwidth()
