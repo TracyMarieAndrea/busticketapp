@@ -26,9 +26,8 @@ class dashboard(object):
         def proceed_bus_details_form():
             show = bus_details_form(dashboard_window)
         def proceed_bus_seating(location,time):
-            confirmation = messagebox.askyesno("Confirmation", f"Selected Location: {location}\nTime: {time}\nProceed to Bus Seating?")
-            if confirmation:
-                show = bus_seating(dashboard_window)
+            #confirmation = messagebox.askyesno("Confirmation", f"Selected Location: {location}\nTime: {time}\nProceed to Bus Seating?")
+            show = bus_seating(dashboard_window, location, time)
             
             
            
@@ -75,7 +74,7 @@ class dashboard(object):
         caticlan_seatnum = ["6:00AM", "10:00AM", "2:00PM", "6:00PM"]
 
         for caticlan_seat in caticlan_seatnum:
-            caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=lambda loc="Caticlan", time=caticlan_seat: proceed_bus_seating(loc, time))
+            caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=lambda bustime=caticlan_seat: proceed_bus_seating("Caticlan",bustime))
             caticlan_bus_button.pack(padx=10, pady=10)
 
         kalibo_bottomframe = Frame(dashboard_window)

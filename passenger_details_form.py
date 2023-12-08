@@ -9,7 +9,7 @@ import sqlite3
  
 class passenger(object):
 
-    def __init__(self, window):
+    def __init__(self, window, s, l, t):
         passenger_window = tk.Tk()
         passenger_window.title('Add Passenger')
         width = passenger_window.winfo_screenwidth()
@@ -25,15 +25,25 @@ class passenger(object):
         def save_passenger_details():
             con = sqlite3.connect('bus_ticket_DB.db')
             c = con.cursor()
-            
+
             try:
+                # Insert into passenger_details table
                 c.execute("INSERT INTO passenger_details VALUES (:n, :ad, :cno)",
-                    {
-                        'n':passenger_name_entry.get(),
-                        'ad':address_entry.get(),
-                        'cno':contact_no_entry.get()
-                    }
-                )
+                        {
+                            'n': passenger_name_entry.get(),
+                            'ad': address_entry.get(),
+                            'cno': contact_no_entry.get()
+                        })
+                con.commit()
+
+                # Insert into ticket_table table
+                c.execute("INSERT INTO ticket_table (Bus_Time, Bus_Destination, Bus_Seating, Passenger_Name) VALUES (:bt, :bd, :bs, :pn)",
+                        {
+                            'bt': t,
+                            'bd': l,
+                            'bs': s,
+                            'pn': passenger_name_entry.get()
+                        })
                 con.commit()
 
                 messagebox.showinfo(title="Saved", message="Data Saved!")
@@ -49,6 +59,15 @@ class passenger(object):
         #Welcome Text
         welcome_label = tk.Label(passenger_window,text="PASSENGER DETAILS",font=('Roboto', 35,'bold'),fg='black')
         welcome_label.pack(pady=15)
+
+        bus_location = tk.Label(passenger_window,text=l,font=('Roboto', 12,),fg='black')
+        bus_location.pack(pady=10)
+
+        bus_time = tk.Label(passenger_window,text=t,font=('Roboto', 12,),fg='black')
+        bus_time.pack(pady=10)
+
+        bus_seat = tk.Label(passenger_window,text=s,font=('Roboto', 12,),fg='black')
+        bus_seat.pack(pady=10)
 
         #Bus No. Text
         passenger_name_label = tk.Label(passenger_window,text="Name",font=('Roboto', 12,),fg='black')
