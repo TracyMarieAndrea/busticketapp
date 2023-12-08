@@ -90,7 +90,7 @@ class bus_details_form(object):
         destination_entry.pack(pady=5)
 
         #Save Button
-        save_btn = tk.Button(text="S A V E",background="#52ACA1",border=0, command=save_bus_details)
+        save_btn = tk.Button(window, text="S A V E",background="#52ACA1",border=0, command=save_bus_details)
         save_btn.pack(pady=10)
         # save_btn.place(rely=0,relx=0,height=25,width=230)
 

@@ -4,6 +4,7 @@ import tkinter as tk
 from PIL import Image,ImageTk
 from bus_management import bus_management
 from bus_details_form import bus_details_form
+from bus_seating import bus_seating
 
 class dashboard(object):
 
@@ -22,6 +23,8 @@ class dashboard(object):
             show = bus_management(window)
         def proceed_bus_details_form():
             show = bus_details_form(window)
+        def proceed_bus_seating():
+            show = bus_seating(window)
 
         menubar = Menu(window)
         window.config(menu=menubar)
@@ -51,74 +54,98 @@ class dashboard(object):
 
         frame = Frame(window)
         frame.pack()
-        red_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black', width=20)
-        red_label.pack(side=LEFT, padx=10, pady=10)
-        green_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black')
-        green_label.pack(side=LEFT, padx=10, pady=10)
-        blue_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black', width=20)
-        blue_label.pack(side=LEFT, padx=10, pady=10)
-        black_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black')
-        black_label.pack(side=LEFT, padx=10, pady=10)
+        # red_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black', width=20)
+        # red_label.pack(side=LEFT, padx=10, pady=10)
+        # green_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black')
+        # green_label.pack(side=LEFT, padx=10, pady=10)
+        # blue_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black', width=20)
+        # blue_label.pack(side=LEFT, padx=10, pady=10)
+        # black_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black')
+        # black_label.pack(side=LEFT, padx=10, pady=10)
 
 
-        bottomframe = Frame(window)
-        bottomframe.pack()
+        # bottomframe = Frame(window)
+        # bottomframe.pack(side=LEFT)
 
-        redbutton = Button(bottomframe, text="Red", fg="red", width=40, height=3)
-        redbutton.pack( side = LEFT, padx=10, pady=10)
+        # seatnum = ["A1", "A2", "A3", "A4"]
 
-        greenbutton = Button(bottomframe, text="Brown", fg="brown", width=40, height=3)
-        greenbutton.pack( side = LEFT, padx=10, pady=10)
+        # for seat in seatnum:
+        #     redbutton = Button(bottomframe, text="seat", fg="red", width=40, height=3, command=proceed_bus_seating)
+        #     redbutton.pack(padx=10, pady=10)
 
-        bluebutton = Button(bottomframe, text="Blue", fg="blue", width=40, height=3)
-        bluebutton.pack( side = LEFT, padx=10, pady=10)
+        # bottomframe = Frame(window)
+        # bottomframe.pack(side=LEFT)
 
-        blackbutton = Button(bottomframe, text="Black", fg="black", width=40, height=3)
-        blackbutton.pack( side = LEFT, padx=10, pady=10)
+        # seatnum = ["A1", "A2", "A3", "A4"]
 
-        bottomframe = Frame(window)
-        bottomframe.pack()
+        # for seat in seatnum:
+        #     redbutton = Button(bottomframe, text=seat, fg="red", width=40, height=3, command=proceed_bus_seating)
+        #     redbutton.pack(padx=10, pady=10)
 
-        redbutton = Button(bottomframe, text="Red", fg="red", width=40, height=3)
-        redbutton.pack( side = LEFT, padx=10, pady=10)
+        # bottomframe = Frame(window)
+        # bottomframe.pack(side=LEFT)
 
-        greenbutton = Button(bottomframe, text="Brown", fg="brown", width=40, height=3)
-        greenbutton.pack( side = LEFT, padx=10, pady=10)
+        # seatnum = ["A1", "A2", "A3", "A4"]
 
-        bluebutton = Button(bottomframe, text="Blue", fg="blue", width=40, height=3)
-        bluebutton.pack( side = LEFT, padx=10, pady=10)
+        # for seat in seatnum:
+        #     redbutton = Button(bottomframe, text="seat", fg="red", width=40, height=3, command=proceed_bus_seating)
+        #     redbutton.pack(padx=10, pady=10)
 
-        blackbutton = Button(bottomframe, text="Black", fg="black", width=40, height=3)
-        blackbutton.pack( side = LEFT, padx=10, pady=10)
+        # bottomframe = Frame(window)
+        # bottomframe.pack( side=LEFT)
 
-        bottomframe = Frame(window)
-        bottomframe.pack()
+        # seatnum = ["A1", "A2", "A3", "A4"]
 
-        redbutton = Button(bottomframe, text="Red", fg="red", width=40, height=3)
-        redbutton.pack( side = LEFT, padx=10, pady=10)
+        # for seat in seatnum:
+        #     blackbutton = Button(bottomframe, text=seat, fg="black", width=40, height=3, command=proceed_bus_seating)
+        #     blackbutton.pack(padx=10, pady=10)
 
-        greenbutton = Button(bottomframe, text="Brown", fg="brown", width=40, height=3)
-        greenbutton.pack( side = LEFT, padx=10, pady=10)
+        # Labels
+        labels = [
+            ("CATICLAN", 'black', 12),
+            ("KALIBO", 'black', 12),
+            ("ANTIQUE", 'black', 12),
+            ("CALIBO", 'black', 12)
+        ]
 
-        bluebutton = Button(bottomframe, text="Blue", fg="blue", width=40, height=3)
-        bluebutton.pack( side = LEFT, padx=10, pady=10)
+        for text, color, width in labels:
+            label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
+            label.pack(side=LEFT, padx=10, pady=10)
 
-        blackbutton = Button(bottomframe, text="Black", fg="black", width=40, height=3)
-        blackbutton.pack( side = LEFT, padx=10, pady=10)
+        caticlan_bottomframe = Frame(window)
+        caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        bottomframe = Frame(window)
-        bottomframe.pack()
+        caticlan_seatnum = ["A1", "A2", "A3", "A4"]
 
-        redbutton = Button(bottomframe, text="Red", fg="red", width=40, height=3)
-        redbutton.pack( side = LEFT, padx=10, pady=10)
+        for caticlan_seat in caticlan_seatnum:
+            caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
+            caticlan_bus_button.pack(padx=10, pady=10)
 
-        greenbutton = Button(bottomframe, text="Brown", fg="brown", width=40, height=3)
-        greenbutton.pack( side = LEFT, padx=10, pady=10)
+        kalibo_bottomframe = Frame(window)
+        kalibo_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        bluebutton = Button(bottomframe, text="Blue", fg="blue", width=40, height=3)
-        bluebutton.pack( side = LEFT, padx=10, pady=10)
+        kalibo_seatnum = ["B1", "B2", "B3", "B4"]
 
-        blackbutton = Button(bottomframe, text="Black", fg="black", width=40, height=3)
-        blackbutton.pack( side = LEFT, padx=10, pady=10)
+        for kalibo_seat in kalibo_seatnum:
+            kalibo_bus_button = Button(kalibo_bottomframe, text=kalibo_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
+            kalibo_bus_button.pack(padx=10, pady=10)
+
+        antique_bottomframe = Frame(window)
+        antique_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
+
+        antique_seatnum = ["C1", "C2", "C3", "C4"]
+
+        for antique_seat in antique_seatnum:
+            antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
+            antique_bus_button.pack(padx=10, pady=10)
+
+        _bottomframe = Frame(window)
+        _bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
+
+        antique_seatnum = ["C1", "C2", "C3", "C4"]
+
+        for antique_seat in antique_seatnum:
+            antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
+            antique_bus_button.pack(padx=10, pady=10)
 
         window.mainloop()
