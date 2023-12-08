@@ -32,7 +32,7 @@ class bus_details_form(object):
 
 
         #Welcome Text
-        welcome_label = tk.Label(bus_details_window,text="INPUT BUS DETAILS",font=('Roboto', 35,'bold'),fg='black')
+        welcome_label = tk.Label(bus_details_window,text="ADD BUS DETAILS",font=('Roboto', 35,'bold'),fg='black')
         welcome_label.pack(pady=15)
 
         #Bus No. Text
