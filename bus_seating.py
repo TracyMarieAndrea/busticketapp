@@ -4,6 +4,7 @@ import tkinter as tk
 from PIL import Image,ImageTk
 from bus_management import bus_management
 from bus_details_form import bus_details_form
+from passenger_details_form import passenger
 
 class bus_seating(object):
 
@@ -22,6 +23,8 @@ class bus_seating(object):
             show = bus_management(window)
         def proceed_bus_details_form():
             show = bus_details_form(window)
+        def procee_passenger_form():
+            show = passenger(window)
 
         menubar = Menu(window)
         window.config(menu=menubar)
@@ -59,7 +62,7 @@ class bus_seating(object):
         seatnum = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"]
 
         for seat in seatnum:
-            redbutton = Button(bottomframe, text=seat, width=5)
+            redbutton = Button(bottomframe, text=seat, width=5,command=procee_passenger_form)
             redbutton.pack( side = LEFT, padx=10, pady=10)
 
         bottomframe = Frame(window)
@@ -68,7 +71,7 @@ class bus_seating(object):
         seatnum = ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"]
 
         for seat in seatnum:
-            redbutton = Button(bottomframe, text=seat, width=5)
+            redbutton = Button(bottomframe, text=seat, width=5,command=procee_passenger_form)
             redbutton.pack( side = LEFT, padx=10, pady=10)  
         
 

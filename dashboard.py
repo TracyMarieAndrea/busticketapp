@@ -69,7 +69,7 @@ class dashboard(object):
         caticlan_bottomframe = Frame(window)
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        caticlan_seatnum = ["A1", "A2", "A3", "A4"]
+        caticlan_seatnum = ["6:00AM", "10:00AM", "2:00PM", "6:00PM"]
 
         for caticlan_seat in caticlan_seatnum:
             caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
@@ -78,7 +78,7 @@ class dashboard(object):
         kalibo_bottomframe = Frame(window)
         kalibo_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        kalibo_seatnum = ["B1", "B2", "B3", "B4"]
+        kalibo_seatnum = ["5:00AM", "10:30AM", "1:00PM", "4:00PM"]
 
         for kalibo_seat in kalibo_seatnum:
             kalibo_bus_button = Button(kalibo_bottomframe, text=kalibo_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
@@ -87,7 +87,7 @@ class dashboard(object):
         antique_bottomframe = Frame(window)
         antique_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        antique_seatnum = ["C1", "C2", "C3", "C4"]
+        antique_seatnum = ["5:30AM", "9:00AM", "12:00PM", "4:00PM"]
 
         for antique_seat in antique_seatnum:
             antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
@@ -96,7 +96,7 @@ class dashboard(object):
         capiz_bottomframe = Frame(window)
         capiz_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        capiz_seatnum = ["C1", "C2", "C3", "C4"]
+        capiz_seatnum = ["7:30AM", "12:00PM", "2:30PM", "6:00PM"]
 
         for capiz_seat in capiz_seatnum:
             capiz_bus_button = Button(capiz_bottomframe, text=capiz_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
