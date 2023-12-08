@@ -105,7 +105,7 @@ class dashboard(object):
             ("CATICLAN", 'black', 12),
             ("KALIBO", 'black', 12),
             ("ANTIQUE", 'black', 12),
-            ("CALIBO", 'black', 12)
+            ("CAPIZ", 'black', 12)
         ]
 
         for text, color, width in labels:
@@ -139,13 +139,13 @@ class dashboard(object):
             antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
             antique_bus_button.pack(padx=10, pady=10)
 
-        _bottomframe = Frame(window)
-        _bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
+        capiz_bottomframe = Frame(window)
+        capiz_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        antique_seatnum = ["C1", "C2", "C3", "C4"]
+        capiz_seatnum = ["C1", "C2", "C3", "C4"]
 
-        for antique_seat in antique_seatnum:
-            antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
-            antique_bus_button.pack(padx=10, pady=10)
+        for capiz_seat in capiz_seatnum:
+            capiz_bus_button = Button(capiz_bottomframe, text=capiz_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
+            capiz_bus_button.pack(padx=10, pady=10)
 
         window.mainloop()
