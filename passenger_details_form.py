@@ -17,10 +17,10 @@ class passenger(object):
 
         passenger_window.geometry("%dx%d" % (width, height))
 
-        from bus_seating import bus_seating
+        from dashboard import dashboard
         def go_back():
             passenger_window.destroy()  # Close the current window
-            bus_seating(window) 
+            dashboard(window) 
 
         def save_passenger_details():
             con = sqlite3.connect('bus_ticket_DB.db')
@@ -28,7 +28,7 @@ class passenger(object):
 
             try:
                 # Insert into passenger_details table
-                c.execute("INSERT INTO passenger_details VALUES (:n, :ad, :cno)",
+                c.execute("INSERT INTO passenger_details (passenger_name, address, contact_num) VALUES (:n, :ad, :cno)",
                         {
                             'n': passenger_name_entry.get(),
                             'ad': address_entry.get(),
