@@ -8,6 +8,34 @@ window.title("DATABASE")
 con = sqlite3.connect("bus_ticket_DB.db")
 
 c = con.cursor()
+#Ticketing table
+c.execute("""CREATE TABLE ticket_table (
+    Bus_ID text NOT NULL,
+    Bus_Num text NOT NULL,
+    Bus_Time text NOT NULL,
+    Bus_Destination text NOT NULL,
+    A1 text,
+    A2 text,
+    A3 text,
+    A4 text,
+    A5 text,
+    A6 text,
+    A7 text,
+    A8 text,
+    A9 text,
+    A10 text,
+    B1 text,
+    B2 text,
+    B3 text,
+    B4 text,
+    B5 text,
+    B6 text,
+    B7 text,
+    B8 text,
+    B9 text,
+    B10 text
+    )
+    """)
 
 # #Admin Details Table
 c.execute("""CREATE TABLE admin_credentials (
@@ -44,6 +72,9 @@ c.execute("""CREATE TABLE passenger_details (
     contact_num int NOT NULL
     )
     """)
+
+
+
 
 con.commit()
 con.close()
