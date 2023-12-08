@@ -6,7 +6,7 @@ from dashboard import dashboard
 import sqlite3
 
 
-#test git Nik
+#test git
 
 window = tk.Tk()
 window.title('Welcome')
