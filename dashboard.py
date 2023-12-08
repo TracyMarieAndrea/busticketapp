@@ -54,53 +54,7 @@ class dashboard(object):
 
         frame = Frame(window)
         frame.pack()
-        # red_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black', width=20)
-        # red_label.pack(side=LEFT, padx=10, pady=10)
-        # green_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black')
-        # green_label.pack(side=LEFT, padx=10, pady=10)
-        # blue_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black', width=20)
-        # blue_label.pack(side=LEFT, padx=10, pady=10)
-        # black_label = tk.Label(frame, text="CALIBO", font=('Roboto', 25, 'bold'), fg='black')
-        # black_label.pack(side=LEFT, padx=10, pady=10)
-
-
-        # bottomframe = Frame(window)
-        # bottomframe.pack(side=LEFT)
-
-        # seatnum = ["A1", "A2", "A3", "A4"]
-
-        # for seat in seatnum:
-        #     redbutton = Button(bottomframe, text="seat", fg="red", width=40, height=3, command=proceed_bus_seating)
-        #     redbutton.pack(padx=10, pady=10)
-
-        # bottomframe = Frame(window)
-        # bottomframe.pack(side=LEFT)
-
-        # seatnum = ["A1", "A2", "A3", "A4"]
-
-        # for seat in seatnum:
-        #     redbutton = Button(bottomframe, text=seat, fg="red", width=40, height=3, command=proceed_bus_seating)
-        #     redbutton.pack(padx=10, pady=10)
-
-        # bottomframe = Frame(window)
-        # bottomframe.pack(side=LEFT)
-
-        # seatnum = ["A1", "A2", "A3", "A4"]
-
-        # for seat in seatnum:
-        #     redbutton = Button(bottomframe, text="seat", fg="red", width=40, height=3, command=proceed_bus_seating)
-        #     redbutton.pack(padx=10, pady=10)
-
-        # bottomframe = Frame(window)
-        # bottomframe.pack( side=LEFT)
-
-        # seatnum = ["A1", "A2", "A3", "A4"]
-
-        # for seat in seatnum:
-        #     blackbutton = Button(bottomframe, text=seat, fg="black", width=40, height=3, command=proceed_bus_seating)
-        #     blackbutton.pack(padx=10, pady=10)
-
-        # Labels
+        
         labels = [
             ("CATICLAN", 'black', 12),
             ("KALIBO", 'black', 12),
