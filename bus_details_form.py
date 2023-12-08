@@ -8,7 +8,7 @@ import sqlite3
 class bus_details_form(object):
     def __init__(self, window):
         window = tk.Tk()
-        window.title('Welcome')
+        window.title('Add Bus')
         width = window.winfo_screenwidth()
         height = window.winfo_screenheight()
 

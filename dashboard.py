@@ -10,24 +10,31 @@ class dashboard(object):
 
     def __init__(self,window):
 
-        window = tk.Tk()
-        window.title('Welcome')
+        dashboard_window = tk.Tk()
+        dashboard_window.title('Dashboard')
 
-        width = window.winfo_screenwidth()
-        height = window.winfo_screenheight()
+        width = dashboard_window.winfo_screenwidth()
+        height = dashboard_window.winfo_screenheight()
 
-        window.geometry("%dx%d" % (width, height))
+        dashboard_window.geometry("%dx%d" % (width, height))
+
+        
 
         
         def proceed_bus_management():
-            show = bus_management(window)
+            show = bus_management(dashboard_window)
         def proceed_bus_details_form():
-            show = bus_details_form(window)
-        def proceed_bus_seating():
-            show = bus_seating(window)
+            show = bus_details_form(dashboard_window)
+        def proceed_bus_seating(location,time):
+            confirmation = messagebox.askyesno("Confirmation", f"Selected Location: {location}\nTime: {time}\nProceed to Bus Seating?")
+            if confirmation:
+                show = bus_seating(dashboard_window)
+            
+            
+           
 
-        menubar = Menu(window)
-        window.config(menu=menubar)
+        menubar = Menu(dashboard_window)
+        dashboard_window.config(menu=menubar)
 
         # create a menu
         bus_menu = Menu(menubar, tearoff=False)
@@ -37,10 +44,6 @@ class dashboard(object):
         bus_menu.add_command(
             label='Bus Management',
             command=proceed_bus_management
-        )
-        bus_menu.add_command(
-            label='Bus Input',
-            command=proceed_bus_details_form
         )
 
         # add the File menu to the menubar
@@ -52,7 +55,7 @@ class dashboard(object):
             label="Report"
         )
 
-        frame = Frame(window)
+        frame = Frame(dashboard_window)
         frame.pack()
         
         labels = [
@@ -66,16 +69,16 @@ class dashboard(object):
             label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
             label.pack(side=LEFT, padx=10, pady=10)
 
-        caticlan_bottomframe = Frame(window)
+        caticlan_bottomframe = Frame(dashboard_window)
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         caticlan_seatnum = ["6:00AM", "10:00AM", "2:00PM", "6:00PM"]
 
         for caticlan_seat in caticlan_seatnum:
-            caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
+            caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=lambda loc="Caticlan", time=caticlan_seat: proceed_bus_seating(loc, time))
             caticlan_bus_button.pack(padx=10, pady=10)
 
-        kalibo_bottomframe = Frame(window)
+        kalibo_bottomframe = Frame(dashboard_window)
         kalibo_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         kalibo_seatnum = ["5:00AM", "10:30AM", "1:00PM", "4:00PM"]
@@ -84,7 +87,7 @@ class dashboard(object):
             kalibo_bus_button = Button(kalibo_bottomframe, text=kalibo_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
             kalibo_bus_button.pack(padx=10, pady=10)
 
-        antique_bottomframe = Frame(window)
+        antique_bottomframe = Frame(dashboard_window)
         antique_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         antique_seatnum = ["5:30AM", "9:00AM", "12:00PM", "4:00PM"]
@@ -93,7 +96,7 @@ class dashboard(object):
             antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=proceed_bus_seating)
             antique_bus_button.pack(padx=10, pady=10)
 
-        capiz_bottomframe = Frame(window)
+        capiz_bottomframe = Frame(dashboard_window)
         capiz_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         capiz_seatnum = ["7:30AM", "12:00PM", "2:30PM", "6:00PM"]
