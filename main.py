@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageTk
 from dashboard import dashboard
+import sqlite3
 
 
 window = tk.Tk()
@@ -18,10 +19,16 @@ def proceed_dashboard():
 
 #Login Function
 def login():
-    username = "Admin"
-    password = "admin123"
+    entered_username = username_entry.get()
+    entered_password = password_entry.get()
 
-    if username_entry.get()==username and password_entry.get()==password:
+    con = sqlite3.connect("bus_ticket_DB.db")
+    c = con.cursor()
+
+    c.execute("SELECT * FROM admin_credentials WHERE uname=? AND pword=?", (entered_username, entered_password))
+    result = c.fetchone()
+    
+    if result:
         messagebox.showinfo(title="Login Successful!", message="You successfully logged in.")
         proceed_dashboard()
     else:
@@ -61,6 +68,7 @@ password_entry.place(rely=0.55,relx=0.60,width=230,height=30)
 login_btn = tk.Button(text="LOGIN",background="#52ACA1",border=0,command=login)
 login_btn.pack(pady=10)
 login_btn.place(rely=0.70,relx=0.60,height=25,width=230)
+
 #Create a canvas
 canvas= Canvas(window, width= 600, height= 600)
 canvas.pack()
@@ -70,7 +78,7 @@ canvas.place(rely=0.15,relx=0.10)
 img= (Image.open("ticket.png"))
 
 #Resize the Image using resize method
-resized_image= img.resize((400,500), Image.ANTIALIAS)
+resized_image= img.resize((400,500))
 new_image= ImageTk.PhotoImage(resized_image)
 
 #Add image to the Canvas Items
