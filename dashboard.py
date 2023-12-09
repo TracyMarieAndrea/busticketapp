@@ -5,6 +5,7 @@ from PIL import Image,ImageTk
 from bus_management import bus_management
 from bus_details_form import bus_details_form
 from bus_seating import bus_seating
+import sqlite3
 
 class dashboard(object):
 
@@ -16,9 +17,7 @@ class dashboard(object):
         width = dashboard_window.winfo_screenwidth()
         height = dashboard_window.winfo_screenheight()
 
-        dashboard_window.geometry("%dx%d" % (width, height))
-
-        
+        dashboard_window.geometry("%dx%d" % (width, height))  
 
         
         def proceed_bus_management():
@@ -29,7 +28,8 @@ class dashboard(object):
             #confirmation = messagebox.askyesno("Confirmation", f"Selected Location: {location}\nTime: {time}\nProceed to Bus Seating?")
             show = bus_seating(dashboard_window, location, time)
             
-            
+        con = sqlite3.connect('bus_ticket_DB.db')
+        c = con.cursor()  
            
 
         menubar = Menu(dashboard_window)
@@ -71,37 +71,49 @@ class dashboard(object):
         caticlan_bottomframe = Frame(dashboard_window)
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        caticlan_seatnum = ["6:00AM", "10:00AM", "2:00PM", "6:00PM"]
+        
+        c.execute("SELECT * FROM bus_details WHERE destination = 'Caticlan'")
+        results_caticlan = c.fetchall()
 
-        for caticlan_seat in caticlan_seatnum:
-            caticlan_bus_button = Button(caticlan_bottomframe, text=caticlan_seat, fg="red", width=35, height=3, command=lambda bustime=caticlan_seat: proceed_bus_seating("Caticlan",bustime))
-            caticlan_bus_button.pack(padx=10, pady=10)
+        if results_caticlan:
+            for result in results_caticlan:
+                caticlan_bus_button = Button(caticlan_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                caticlan_bus_button.pack(padx=10, pady=10)
+        
 
         kalibo_bottomframe = Frame(dashboard_window)
         kalibo_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        kalibo_seatnum = ["5:00AM", "10:30AM", "1:00PM", "4:00PM"]
+        c.execute("SELECT * FROM bus_details WHERE destination = 'Kalibo'")
+        results_kalibo = c.fetchall()
 
-        for kalibo_seat in kalibo_seatnum:
-            kalibo_bus_button = Button(kalibo_bottomframe, text=kalibo_seat, fg="red", width=35, height=3, command=lambda bustime=kalibo_seat: proceed_bus_seating("Kalibo",bustime))
-            kalibo_bus_button.pack(padx=10, pady=10)
+        if results_kalibo:
+            for result in results_kalibo:
+                kalibo_bus_button = Button(kalibo_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                kalibo_bus_button.pack(padx=10, pady=10)
 
         antique_bottomframe = Frame(dashboard_window)
         antique_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        antique_seatnum = ["5:30AM", "9:00AM", "12:00PM", "4:00PM"]
 
-        for antique_seat in antique_seatnum:
-            antique_bus_button = Button(antique_bottomframe, text=antique_seat, fg="red", width=35, height=3, command=lambda bustime=antique_seat: proceed_bus_seating("Antique",bustime))
-            antique_bus_button.pack(padx=10, pady=10)
+        c.execute("SELECT * FROM bus_details WHERE destination = 'Antique'")
+        results_antique = c.fetchall()
+
+        if results_antique:
+            for result in results_antique:
+                antique_bus_button = Button(antique_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                antique_bus_button.pack(padx=10, pady=10)
 
         capiz_bottomframe = Frame(dashboard_window)
         capiz_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        capiz_seatnum = ["7:30AM", "12:00PM", "2:30PM", "6:00PM"]
+        c.execute("SELECT * FROM bus_details WHERE destination = 'Capiz'")
+        results_capiz = c.fetchall()
 
-        for capiz_seat in capiz_seatnum:
-            capiz_bus_button = Button(capiz_bottomframe, text=capiz_seat, fg="red", width=35, height=3, command=lambda bustime=capiz_seat: proceed_bus_seating("Capiz",bustime))
-            capiz_bus_button.pack(padx=10, pady=10)
+        if results_capiz:
+            for result in results_capiz:
+                capiz_bus_button = Button(capiz_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                capiz_bus_button.pack(padx=10, pady=10)
 
+        con.close()
         window.mainloop()
