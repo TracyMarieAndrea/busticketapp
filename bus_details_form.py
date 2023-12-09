@@ -14,14 +14,15 @@ class bus_details_form(object):
         def save_bus_details():
             con = sqlite3.connect('bus_ticket_DB.db')
             c = con.cursor()
-            c.execute("INSERT INTO bus_details VALUES (:bn, :pn, :dn, :cn, :cp, :d)",
+            c.execute("INSERT INTO bus_details VALUES (:bn, :pn, :dn, :cn, :cp, :d, :s)",
                 {
                     'bn':bus_num_entry.get(),
                     'pn':plate_num_entry.get(),
                     'dn':driver_name_entry.get(),
                     'cn':contact_num_entry.get(),
                     'cp':capacity_entry.get(),
-                    'd':destination_entry.get()
+                    'd':destination_entry.get(),
+                    's':schedule_entry.get()
                 }
             )
             con.commit()
@@ -88,6 +89,14 @@ class bus_details_form(object):
         #Destination Entry
         destination_entry = tk.Entry(bus_details_window)
         destination_entry.pack(pady=5)
+
+        #Schedule Text
+        schedule_label = tk.Label(bus_details_window,text="Schedule",font=('Roboto', 12,),fg='black')
+        schedule_label.pack(pady=10)
+
+        #Schedule Entry
+        schedule_entry = tk.Entry(bus_details_window)
+        schedule_entry.pack(pady=5)
 
         #Save Button
         save_btn = tk.Button(bus_details_window, text="S A V E",background="#52ACA1",border=0, command=save_bus_details)

@@ -115,7 +115,7 @@ class bus_management(object):
         c.execute("SELECT * FROM bus_details")
         result = c.fetchall()
         
-        columns = ("Bus Number", "Plate Number", "Driver Name", "Contact Number", "Capacity", "Destination")
+        columns = ("Bus Number", "Plate Number", "Driver Name", "Contact Number", "Capacity", "Destination", "Schedule")
         global tree
         tree = ttk.Treeview(bus_management_window, columns=columns, show="headings")
 
