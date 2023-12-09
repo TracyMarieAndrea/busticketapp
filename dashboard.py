@@ -115,5 +115,6 @@ class dashboard(object):
                 capiz_bus_button = Button(capiz_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
                 capiz_bus_button.pack(padx=10, pady=10)
 
+
         con.close()
         window.mainloop()
