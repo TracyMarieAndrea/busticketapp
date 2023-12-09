@@ -77,7 +77,7 @@ class dashboard(object):
 
         if results_caticlan:
             for result in results_caticlan:
-                caticlan_bus_button = Button(caticlan_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                caticlan_bus_button = Button(caticlan_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime))
                 caticlan_bus_button.pack(padx=10, pady=10)
         
 
@@ -89,7 +89,7 @@ class dashboard(object):
 
         if results_kalibo:
             for result in results_kalibo:
-                kalibo_bus_button = Button(kalibo_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                kalibo_bus_button = Button(kalibo_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime))
                 kalibo_bus_button.pack(padx=10, pady=10)
 
         antique_bottomframe = Frame(dashboard_window)
@@ -101,7 +101,7 @@ class dashboard(object):
 
         if results_antique:
             for result in results_antique:
-                antique_bus_button = Button(antique_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                antique_bus_button = Button(antique_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime))
                 antique_bus_button.pack(padx=10, pady=10)
 
         capiz_bottomframe = Frame(dashboard_window)
@@ -112,7 +112,7 @@ class dashboard(object):
 
         if results_capiz:
             for result in results_capiz:
-                capiz_bus_button = Button(capiz_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6]: proceed_bus_seating(result[5],bustime))
+                capiz_bus_button = Button(capiz_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime))
                 capiz_bus_button.pack(padx=10, pady=10)
 
 
