@@ -24,7 +24,7 @@ c.execute("""CREATE TABLE passenger_details (
     """)
 #Ticketing table
 c.execute("""CREATE TABLE ticket_table (
-    Ticket_ID text NOT NULL,
+    Bus_ID text NOT NULL,
     Bus_Num text NOT NULL,
     Bus_Time text NOT NULL,
     Bus_Destination text NOT NULL,
