@@ -9,7 +9,7 @@ import sqlite3
 
 class bus_seating(object):
 
-    def __init__(self,window, location, time):
+    def __init__(self,window, location, time,busno):
         window = tk.Tk()
         window.title('Bus Seating')
 
@@ -23,16 +23,18 @@ class bus_seating(object):
             show = bus_management(window)
         def proceed_bus_details_form():
             show = bus_details_form(window)
-        def proceed_passenger_form(s,l,t):
-            show = passenger(window,s,l,t)
+        def proceed_passenger_form(s,l,t,b):
+            show = passenger(window,s,l,t,b)
 
         frame = Frame(window)
         frame.pack()
 
         location_label = tk.Label(window,text=location,font=('Roboto', 35,'bold'),fg='black')
         location_label.pack()
-        location_label = tk.Label(window,text=time,font=('Roboto', 25,'bold'),fg='black')
-        location_label.pack()
+        time_label = tk.Label(window,text=time,font=('Roboto', 25,'bold'),fg='black')
+        time_label.pack()
+        busno_label = tk.Label(window,text=busno,font=('Roboto', 25,'bold'),fg='black')
+        busno_label.pack()
 
 
         bottomframe = Frame(window)
@@ -51,7 +53,7 @@ class bus_seating(object):
             button_color = "green" if result is None else "red"
             
             if(button_color == "green"):
-                redbutton = Button(bottomframe, fg=button_color, text=seat, width=5,command=lambda s=seat: proceed_passenger_form(s, location, time))
+                redbutton = Button(bottomframe, fg=button_color, text=seat, width=5,command=lambda s=seat: proceed_passenger_form(s, location, time,busno))
             else:
                 redbutton = Button(bottomframe, fg=button_color, text=seat, width=5)
             redbutton.pack( side = LEFT, padx=10, pady=10)
@@ -77,7 +79,7 @@ class bus_seating(object):
             button_color = "green" if result is None else "red"
 
             if(button_color == "green"):
-                redbutton = Button(bottomframe, fg=button_color, text=seat, width=5,command=lambda s=seat: proceed_passenger_form(s, location, time))
+                redbutton = Button(bottomframe, fg=button_color, text=seat, width=5,command=lambda s=seat: proceed_passenger_form(s, location, time,busno))
             else:
                 redbutton = Button(bottomframe, fg=button_color, text=seat, width=5)
             redbutton.pack( side = LEFT, padx=10, pady=10)  

@@ -24,9 +24,9 @@ class dashboard(object):
             show = bus_management(dashboard_window)
         def proceed_bus_details_form():
             show = bus_details_form(dashboard_window)
-        def proceed_bus_seating(location,time):
+        def proceed_bus_seating(location,time,busno):
             #confirmation = messagebox.askyesno("Confirmation", f"Selected Location: {location}\nTime: {time}\nProceed to Bus Seating?")
-            show = bus_seating(dashboard_window, location, time)
+            show = bus_seating(dashboard_window, location, time,busno)
             
         con = sqlite3.connect('bus_ticket_DB.db')
         c = con.cursor()  
@@ -77,7 +77,7 @@ class dashboard(object):
 
         if results_caticlan:
             for result in results_caticlan:
-                caticlan_bus_button = Button(caticlan_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime))
+                caticlan_bus_button = Button(caticlan_bottomframe, text=result[1] + " - " +result[6], fg="red", width=35, height=3, command=lambda busno=result[1], bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 caticlan_bus_button.pack(padx=10, pady=10)
         
 
