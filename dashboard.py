@@ -50,9 +50,6 @@ class dashboard(object):
             label="Bus",
             menu=bus_menu
         )
-        menubar.add_cascade(
-            label="Report"
-        )
 
         frame = Frame(dashboard_window)
         frame.pack()
