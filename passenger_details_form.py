@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageTk
 import sqlite3
-
+from datetime import datetime
 
  
 class passenger(object):
@@ -26,11 +26,24 @@ class passenger(object):
             con = sqlite3.connect('bus_ticket_DB.db')
             c = con.cursor()
 
+            current_date = datetime.now().strftime('%Y%m%d')
+
+            c.execute("SELECT MAX(CAST(SUBSTR(Ticket_ID, 9) AS INTEGER)) FROM passenger_details")
+            max_id = c.fetchone()[0]
+
+            if max_id is None:
+                max_id = 0
+
+            max_id += 1
+
+            ticket_id = f'{current_date}{max_id:04d}'
+
+
     #Ticket_Date text NOT NULL,
     
             try:
                 # Insert into passenger_details table
-                c.execute("INSERT INTO passenger_details (passenger_name, address, contact_num,Bus_Num,Bus_Time,Bus_Destination,Bus_Seating) VALUES (:n, :ad, :cno, :bn, :bt, :bl, :bs)",
+                c.execute("INSERT INTO passenger_details (passenger_name, address, contact_num,Bus_Num,Bus_Time,Bus_Destination,Bus_Seating,Ticket_ID) VALUES (:n, :ad, :cno, :bn, :bt, :bl, :bs,:ti)",
                         {
                             'n': passenger_name_entry.get(),
                             'ad': address_entry.get(),
@@ -38,19 +51,22 @@ class passenger(object):
                             'bn':b,
                             'bt':t,
                             'bl':l,
-                            'bs':s
+                            'bs':s,
+                            'ti':ticket_id
 
                         })
                 con.commit()
 
                 # Insert into ticket_table table
-                c.execute("INSERT INTO ticket_table (Bus_Time, Bus_Destination, Bus_Seating, Passenger_Name,Bus_Num) VALUES (:bt, :bd, :bs, :pn,:bn)",
+                c.execute("INSERT INTO ticket_table (Bus_ID,Bus_Time, Bus_Destination, Bus_Seating, Passenger_Name,Bus_Num) VALUES (:bi,:bt, :bd, :bs, :pn,:bn)",
                         {
+                            'bi':ticket_id,
                             'bt': t,
                             'bd': l,
                             'bs': s,
                             'bn' :b,
                             'pn': passenger_name_entry.get()
+                            
                         })
                 con.commit()
 
