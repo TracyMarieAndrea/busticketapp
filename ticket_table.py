@@ -4,6 +4,7 @@ from tkinter import *
 import sqlite3
 
 class ticket_table():
+    
     def __init__(self, window):
         ticket_window = tk.Tk()
         ticket_window.title('Ticket Table')
@@ -27,14 +28,34 @@ class ticket_table():
             for row in result:
                 tree.insert("", "end", values=row)
 
-            # vertical scrollbar
-            vsb = ttk.Scrollbar(ticket_window, orient="vertical", command=tree.yview)
-            vsb.pack(side="right", fill="y")
-            tree.configure(yscrollcommand=vsb.set)
-
+        
             # Pack the Treeview widget
             tree.pack(expand=True, fill="both")
         
+
+        def clear_data():
+            try:
+                # Connect to the database
+                con = sqlite3.connect("bus_ticket_DB.db")
+                c = con.cursor()
+
+                # Delete all records from the ticket_table
+                c.execute("DELETE FROM ticket_table")
+
+                # Commit the changes to the database
+                con.commit()
+
+                # Clear existing rows in the table
+                for item in tree.get_children():
+                    tree.delete(item)
+
+            except sqlite3.Error as e:
+                print("SQLite error:", e)
+
+            finally:
+                # Close the database connection
+                con.close()
+
 
 
         #Welcome Text
@@ -46,6 +67,9 @@ class ticket_table():
         button_frame.pack()
         refresh_button = tk.Button(button_frame, text="Refresh", command=refresh_table)
         refresh_button.pack(side=LEFT, pady=5, padx=30)
+
+        reset_button = tk.Button(button_frame, text="Reset", command=clear_data)
+        reset_button.pack(side=LEFT, pady=5, padx=30)
 
 
         con = sqlite3.connect("bus_ticket_DB.db")

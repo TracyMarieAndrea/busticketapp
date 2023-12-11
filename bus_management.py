@@ -76,11 +76,7 @@ class bus_management(object):
             for row in result:
                 tree.insert("", "end", values=row)
 
-            # vertical scrollbar
-            vsb = ttk.Scrollbar(bus_management_window, orient="vertical", command=tree.yview)
-            vsb.pack(side="right", fill="y")
-            tree.configure(yscrollcommand=vsb.set)
-
+         
             # Pack the Treeview widget
             tree.pack(expand=True, fill="both")
         

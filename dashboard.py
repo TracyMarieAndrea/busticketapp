@@ -8,6 +8,7 @@ from bus_seating import bus_seating
 import sqlite3
 from passenger_details_table import passenger_table
 from ticket_table import ticket_table
+from tkinter import ttk
 
 class dashboard(object):
 
@@ -38,7 +39,8 @@ class dashboard(object):
             
         con = sqlite3.connect('bus_ticket_DB.db')
         c = con.cursor()  
-           
+
+
 
         menubar = Menu(dashboard_window)
         dashboard_window.config(menu=menubar)
@@ -93,8 +95,8 @@ class dashboard(object):
             label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
             label.pack(side=LEFT, padx=50, pady=10)
 
-        reset_btn = tk.Button(dashboard_window,text='Reset')
-        reset_btn.pack()
+        #reset_btn = tk.Button(dashboard_window,text='Reset',command=clear_data)
+        #reset_btn.pack()
 
         caticlan_bottomframe = Frame(dashboard_window, bg="#ACCAD2")
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)

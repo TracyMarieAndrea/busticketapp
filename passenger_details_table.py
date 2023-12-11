@@ -27,10 +27,7 @@ class passenger_table():
             for row in result:
                 tree.insert("", "end", values=row)
 
-            # vertical scrollbar
-            vsb = ttk.Scrollbar(passenger_table_window, orient="vertical", command=tree.yview)
-            vsb.pack(side="right", fill="y")
-            tree.configure(yscrollcommand=vsb.set)
+          
 
             # Pack the Treeview widget
             tree.pack(expand=True, fill="both")

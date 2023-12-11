@@ -32,12 +32,44 @@ class bus_seating(object):
         none_label = tk.Label(window,text="",font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
         none_label.pack()
 
-        location_label = tk.Label(window,text=location,font=('Roboto', 35,'bold'),fg='black',bg="#ACCAD2")
-        location_label.pack()
-        time_label = tk.Label(window,text=time,font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
-        time_label.pack()
-        busno_label = tk.Label(window,text=busno,font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
-        busno_label.pack()
+        #bus_label_location = tk.Label(destination_frame,text="Destination: ",font=('Roboto', 12, 'bold'),fg='black')
+        #bus_label_location.pack(side=tk.LEFT, pady=3)
+        #location_label = tk.Label(window,text=location,font=('Roboto', 35,'bold'),fg='black',bg="#ACCAD2")
+        #location_label.pack()
+
+        destination_frame = Frame(window,bg="#ACCAD2")
+        destination_frame.pack()
+
+        bus_label_location = tk.Label(destination_frame,text="Destination: ",font=('Roboto', 20, 'bold'),fg='black',bg="#ACCAD2")
+        bus_label_location.pack(side=tk.LEFT, pady=3)
+        bus_location = tk.Label(destination_frame,text=location,font=('Roboto', 20,),fg='black',bg="#ACCAD2")
+        bus_location.pack(side=tk.LEFT, pady=10)
+
+
+
+
+        #time_label = tk.Label(window,text=time,font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
+        #time_label.pack()
+
+        time_frame = Frame(window,bg="#ACCAD2")
+        time_frame.pack()
+
+        bus_label_time = tk.Label(time_frame,text="Time: ",font=('Roboto', 20,'bold'),fg='black',bg="#ACCAD2")
+        bus_label_time.pack(side=tk.LEFT, pady=3)
+        bus_time = tk.Label(time_frame,text=time,font=('Roboto', 20,),fg='black',bg="#ACCAD2")
+        bus_time.pack(side=tk.LEFT, pady=10)
+
+
+        #busno_label = tk.Label(window,text=busno,font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
+        #busno_label.pack()
+
+        plateNo_frame = Frame(window,bg="#ACCAD2")
+        plateNo_frame.pack()
+
+        bus_label_no = tk.Label(plateNo_frame,text="Plate No.: ",font=('Roboto', 20,'bold'),fg='black',bg="#ACCAD2")
+        bus_label_no.pack(side=tk.LEFT, pady=3)
+        bus_no = tk.Label(plateNo_frame,text=busno,font=('Roboto', 20,),fg='black',bg="#ACCAD2")
+        bus_no.pack(pady=10)
 
         none_label = tk.Label(window,text="",font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
         none_label.pack()
