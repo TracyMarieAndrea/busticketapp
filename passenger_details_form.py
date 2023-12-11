@@ -84,16 +84,36 @@ class passenger(object):
         welcome_label = tk.Label(passenger_window,text="PASSENGER DETAILS",font=('Roboto', 35,'bold'),fg='black')
         welcome_label.pack(pady=15)
 
-        bus_location = tk.Label(passenger_window,text=l,font=('Roboto', 12,),fg='black')
-        bus_location.pack(pady=10)
+        destination_frame = Frame(passenger_window)
+        destination_frame.pack()
 
-        bus_time = tk.Label(passenger_window,text=t,font=('Roboto', 12,),fg='black')
-        bus_time.pack(pady=10)
+        bus_label_location = tk.Label(destination_frame,text="Destination: ",font=('Roboto', 12, 'bold'),fg='black')
+        bus_label_location.pack(side=tk.LEFT, pady=3)
+        bus_location = tk.Label(destination_frame,text=l,font=('Roboto', 12,),fg='black')
+        bus_location.pack(side=tk.LEFT, pady=10)
 
-        bus_seat = tk.Label(passenger_window,text=s,font=('Roboto', 12,),fg='black')
+        time_frame = Frame(passenger_window)
+        time_frame.pack()
+
+        bus_label_time = tk.Label(time_frame,text="Time: ",font=('Roboto', 12,'bold'),fg='black')
+        bus_label_time.pack(side=tk.LEFT, pady=3)
+        bus_time = tk.Label(time_frame,text=t,font=('Roboto', 12,),fg='black')
+        bus_time.pack(side=tk.LEFT, pady=10)
+
+        seat_frame = Frame(passenger_window)
+        seat_frame.pack()
+
+        bus_label_seat = tk.Label(seat_frame,text="Seat No.: ",font=('Roboto', 12,'bold'),fg='black')
+        bus_label_seat.pack(side=tk.LEFT, pady=3)
+        bus_seat = tk.Label(seat_frame,text=s,font=('Roboto', 12,),fg='black')
         bus_seat.pack(pady=10)
 
-        bus_no = tk.Label(passenger_window,text=b,font=('Roboto', 12,),fg='black')
+        plateNo_frame = Frame(passenger_window)
+        plateNo_frame.pack()
+
+        bus_label_no = tk.Label(plateNo_frame,text="Plate No.: ",font=('Roboto', 12,'bold'),fg='black')
+        bus_label_no.pack(side=tk.LEFT, pady=3)
+        bus_no = tk.Label(plateNo_frame,text=b,font=('Roboto', 12,),fg='black')
         bus_no.pack(pady=10)
 
         #Bus No. Text
@@ -118,7 +138,7 @@ class passenger(object):
         contact_no_entry.pack(pady=5)
 
         #Save and Ticket Button
-        save_btn = tk.Button(passenger_window,text="T I C K E T",background="#52ACA1",border=0, command=save_passenger_details)
+        save_btn = tk.Button(passenger_window,text="T I C K E T",background="#52ACA1",border=0,width=15,height=2,font=('Roboto',12,'bold'), command=save_passenger_details)
         save_btn.pack(pady=10)
 
         passenger_window.mainloop()
