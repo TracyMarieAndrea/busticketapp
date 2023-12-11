@@ -23,6 +23,44 @@ class bus_management(object):
             show = bus_management(bus_management_window)
         def proceed_bus_details_form():
             show = bus_details_form(bus_management_window)
+
+        def edit_record():
+            selected_item = tree.selection()
+            if not selected_item:
+                messagebox.showwarning("Warning", "Please select a record to edit.")
+                return
+
+            values = tree.item(selected_item)['values']
+
+            # Create a new window for editing
+            edit_window = Toplevel(bus_management_window)
+            edit_window.title('Edit Bus Record')
+            width = edit_window.winfo_screenwidth()
+            height = edit_window.winfo_screenheight()
+            edit_window.configure(bg="#ACCAD2")
+
+            entry_widgets = []
+            for col, value in zip(columns, values):
+                label = Label(edit_window, text=f"{col}:")
+                label.grid(row=len(entry_widgets), column=0, padx=5, pady=5, sticky='e')
+
+                entry = Entry(edit_window)
+                entry.insert(0, value)
+                entry.grid(row=len(entry_widgets), column=1, padx=5, pady=5, sticky='w')
+
+                entry_widgets.append(entry)
+
+            # Function to save changes
+            def save_changes():
+                new_values = [entry.get() for entry in entry_widgets]
+                tree.item(selected_item, values=new_values)
+                edit_window.destroy()
+
+            # Save button
+            save_button = Button(edit_window, text="U P D A T E", command=save_changes)
+            save_button.grid(row=len(entry_widgets), columnspan=2, pady=10)
+
+        
         def delete_record():
         # Check if a row is selected in the Treeview
             selected_item = tree.selection()
@@ -89,7 +127,40 @@ class bus_management(object):
        
         
         def addbus():
-            show = bus_details_form(bus_management_window)
+            add_window = Toplevel(bus_management_window)
+            add_window.title('Add Bus Record')
+            width = bus_management_window.winfo_screenwidth() // 2
+            height = add_window.winfo_screenheight() // 2
+            add_window.geometry("%dx%d" % (width, height))
+            add_window.configure(bg="#ACCAD2")
+
+            add_frame = Frame(add_window, bg="#ACCAD2")
+            add_frame.pack(expand=True)
+
+            entry_widgets = []
+
+            def save_changes():
+                new_values = [entry.get() for entry in entry_widgets]
+                tree.insert("", "end", values=new_values)
+
+                add_window.destroy()
+
+            columns = ("Bus Number", "Plate Number", "Driver Name", "Contact Number", "Capacity", "Destination", "Schedule")
+
+            for col in columns:                
+                label = Label(add_frame, text=f"{col}:", font=('Roboto', 12, 'bold'), bg="#ACCAD2")
+                label.grid(row=len(entry_widgets), column=0, padx=5, pady=5, sticky='e')
+
+                entry = Entry(add_frame)
+                entry.grid(row=len(entry_widgets), column=1, padx=5, pady=5, sticky='w')
+
+                entry_widgets.append(entry)
+
+            # Save button
+            save_button = Button(add_frame, font=('Roboto', 12, 'bold'), text="A D D", command=save_changes)
+            save_button.grid(row=len(entry_widgets), columnspan=2, pady=10)
+
+
 
         # Buttons in one row
         button_frame = Frame(bus_management_window,bg="#ACCAD2")
@@ -98,7 +169,7 @@ class bus_management(object):
         add_button = tk.Button(button_frame, text="Add", command=addbus)
         add_button.pack(side=LEFT, pady=5, padx=30)
 
-        edit_button = tk.Button(button_frame, text="Edit", command=addbus)
+        edit_button = tk.Button(button_frame, text="Edit", command=edit_record)
         edit_button.pack(side=LEFT, pady=5, padx=30)
 
         delete_button = tk.Button(button_frame, text="Delete", command=delete_record)
@@ -106,6 +177,7 @@ class bus_management(object):
 
         refresh_button = tk.Button(button_frame, text="Refresh", command=refresh_table)
         refresh_button.pack(side=LEFT, pady=5, padx=30)
+
 
         con = sqlite3.connect("bus_ticket_DB.db")
         c = con.cursor()
