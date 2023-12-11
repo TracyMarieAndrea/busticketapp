@@ -53,9 +53,9 @@ class bus_seating(object):
             button_color = "green" if result is None else "red"
             
             if(button_color == "green"):
-                A_button = Button(bottomframe, fg=button_color, text=seat_A, width=5,command=lambda s=seat_A: proceed_passenger_form(s, location, time,busno))
+                A_button = Button(bottomframe, bg=button_color, fg="white", text=seat_A, width=5,command=lambda s=seat_A: proceed_passenger_form(s, location, time,busno))
             else:
-                A_button = Button(bottomframe, fg=button_color, text=seat_A, width=5)
+                A_button = Button(bottomframe, bg=button_color, fg="white", text=seat_A, width=5)
             A_button.pack( side = LEFT, padx=10, pady=10)
 
 
@@ -79,9 +79,9 @@ class bus_seating(object):
             button_color = "green" if result is None else "red"
 
             if(button_color == "green"):
-                B_button = Button(bottomframe, fg=button_color, text=seat_B, width=5,command=lambda s=seat_B: proceed_passenger_form(s, location, time,busno))
+                B_button = Button(bottomframe, bg=button_color, fg="white", text=seat_B, width=5,command=lambda s=seat_B: proceed_passenger_form(s, location, time,busno))
             else:
-                B_button = Button(bottomframe, fg=button_color, text=seat_B, width=5)
+                B_button = Button(bottomframe, bg=button_color, fg="white", text=seat_B, width=5)
             B_button.pack( side = LEFT, padx=10, pady=10)  
         con.close()
 
@@ -104,9 +104,9 @@ class bus_seating(object):
             button_color = "green" if result is None else "red"
 
             if(button_color == "green"):
-                C_button = Button(bottomframe, fg=button_color, text=seat_C, width=5,command=lambda s=seat_C: proceed_passenger_form(s, location, time,busno))
+                C_button = Button(bottomframe, bg=button_color, fg="white", text=seat_C, width=5,command=lambda s=seat_C: proceed_passenger_form(s, location, time,busno))
             else:
-                C_button = Button(bottomframe, fg=button_color, text=seat_C, width=5)
+                C_button = Button(bottomframe, bg=button_color, fg="white", text=seat_C, width=5)
             C_button.pack( side = LEFT, padx=10, pady=10)  
         con.close()
 
@@ -129,9 +129,9 @@ class bus_seating(object):
             button_color = "green" if result is None else "red"
 
             if(button_color == "green"):
-                D_button = Button(bottomframe, fg=button_color, text=seat_D, width=5,command=lambda s=seat_D: proceed_passenger_form(s, location, time,busno))
+                D_button = Button(bottomframe, bg=button_color, fg="white", text=seat_D, width=5,command=lambda s=seat_D: proceed_passenger_form(s, location, time,busno))
             else:
-                D_button = Button(bottomframe, fg=button_color, text=seat_D, width=5)
+                D_button = Button(bottomframe, bg=button_color, fg="white", text=seat_D, width=5)
             D_button.pack( side = LEFT, padx=10, pady=10)  
         con.close()
 
