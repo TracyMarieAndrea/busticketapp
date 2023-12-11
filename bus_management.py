@@ -35,16 +35,20 @@ class bus_management(object):
             # Create a new window for editing
             edit_window = Toplevel(bus_management_window)
             edit_window.title('Edit Bus Record')
-            width = edit_window.winfo_screenwidth()
-            height = edit_window.winfo_screenheight()
+            width = bus_management_window.winfo_screenwidth() // 2
+            height = edit_window.winfo_screenheight() // 2
+            edit_window.geometry("%dx%d" % (width, height))
             edit_window.configure(bg="#ACCAD2")
+
+            edit_frame = Frame(edit_window, bg="#ACCAD2")
+            edit_frame.pack(expand=True)
 
             entry_widgets = []
             for col, value in zip(columns, values):
-                label = Label(edit_window, text=f"{col}:")
+                label = Label(edit_frame, text=f"{col}:", font=('Roboto', 12, 'bold'), bg="#ACCAD2")
                 label.grid(row=len(entry_widgets), column=0, padx=5, pady=5, sticky='e')
 
-                entry = Entry(edit_window)
+                entry = Entry(edit_frame)
                 entry.insert(0, value)
                 entry.grid(row=len(entry_widgets), column=1, padx=5, pady=5, sticky='w')
 
@@ -57,7 +61,7 @@ class bus_management(object):
                 edit_window.destroy()
 
             # Save button
-            save_button = Button(edit_window, text="U P D A T E", command=save_changes)
+            save_button = Button(edit_frame, font=('Roboto', 12, 'bold'), text="U P D A T E", command=save_changes)
             save_button.grid(row=len(entry_widgets), columnspan=2, pady=10)
 
         
