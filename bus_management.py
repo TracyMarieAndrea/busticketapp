@@ -58,6 +58,21 @@ class bus_management(object):
             def save_changes():
                 new_values = [entry.get() for entry in entry_widgets]
                 tree.item(selected_item, values=new_values)
+                
+                conn = sqlite3.connect('bus_ticket_DB.db')
+                c = conn.cursor()
+
+                try:
+                    c.execute("UPDATE bus_details SET bus_num=?, plate_num=?, driver_name=?, contact_num=?, capacity=?, destination=?, schedule=? WHERE plate_num=?", (new_values[0], new_values[1], new_values[2], new_values[3], new_values[4], new_values[5], new_values[6], values[1]))
+                    conn.commit()
+
+                except Exception as e:
+                    conn.rollback()
+                    messagebox.showerror(edit_window, "Error", f"Error updating record: {str(e)}")
+
+                finally:
+                    conn.close()
+
                 edit_window.destroy()
 
             # Save button
@@ -146,6 +161,20 @@ class bus_management(object):
             def save_changes():
                 new_values = [entry.get() for entry in entry_widgets]
                 tree.insert("", "end", values=new_values)
+
+                conn = sqlite3.connect('bus_ticket_DB.db')
+                c = conn.cursor()
+
+                try:
+                    c.execute("INSERT INTO bus_details VALUES (?, ?, ?, ?, ?, ?, ?)", tuple(new_values))
+                    conn.commit()
+
+                except Exception as e:
+                    conn.rollback()
+                    messagebox.showerror(add_window, "Error", f"Error adding record: {str(e)}")
+
+                finally:
+                    conn.close()
 
                 add_window.destroy()
 
