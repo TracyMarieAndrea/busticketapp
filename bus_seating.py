@@ -15,7 +15,7 @@ class bus_seating(object):
 
         width = window.winfo_screenwidth()
         height = window.winfo_screenheight()
-
+        window.configure(bg="#ACCAD2")
         window.geometry("%dx%d" % (width, height))
 
         
@@ -26,18 +26,24 @@ class bus_seating(object):
         def proceed_passenger_form(s,l,t,b):
             show = passenger(window,s,l,t,b)
 
-        frame = Frame(window)
+        frame = Frame(window,bg="#ACCAD2")
         frame.pack()
+        
+        none_label = tk.Label(window,text="",font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
+        none_label.pack()
 
-        location_label = tk.Label(window,text=location,font=('Roboto', 35,'bold'),fg='black')
+        location_label = tk.Label(window,text=location,font=('Roboto', 35,'bold'),fg='black',bg="#ACCAD2")
         location_label.pack()
-        time_label = tk.Label(window,text=time,font=('Roboto', 25,'bold'),fg='black')
+        time_label = tk.Label(window,text=time,font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
         time_label.pack()
-        busno_label = tk.Label(window,text=busno,font=('Roboto', 25,'bold'),fg='black')
+        busno_label = tk.Label(window,text=busno,font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
         busno_label.pack()
 
+        none_label = tk.Label(window,text="",font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
+        none_label.pack()
 
-        bottomframe = Frame(window)
+
+        bottomframe = Frame(window,bg="#ACCAD2")
         bottomframe.pack()
 
         seatnum_A = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"]
@@ -61,7 +67,7 @@ class bus_seating(object):
 
 
         con.close()
-        bottomframe = Frame(window)
+        bottomframe = Frame(window,bg="#ACCAD2")
         bottomframe.pack()
 
         seatnum_B = ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"]
@@ -86,7 +92,7 @@ class bus_seating(object):
         con.close()
 
 
-        bottomframe = Frame(window)
+        bottomframe = Frame(window,bg="#ACCAD2")
         bottomframe.pack()
 
         seatnum_C = ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"]
@@ -111,7 +117,7 @@ class bus_seating(object):
         con.close()
 
 
-        bottomframe = Frame(window)
+        bottomframe = Frame(window,bg="#ACCAD2")
         bottomframe.pack()
 
         seatnum_D = ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"]
