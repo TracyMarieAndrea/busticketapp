@@ -6,6 +6,8 @@ from bus_management import bus_management
 from bus_details_form import bus_details_form
 from bus_seating import bus_seating
 import sqlite3
+from passenger_details_table import passenger_table
+from ticket_table import ticket_table
 
 class dashboard(object):
 
@@ -13,6 +15,7 @@ class dashboard(object):
 
         dashboard_window = tk.Tk()
         dashboard_window.title('Dashboard')
+        # dashboard_window.configure(bg="#2E639E")
 
         width = dashboard_window.winfo_screenwidth()
         height = dashboard_window.winfo_screenheight()
@@ -27,6 +30,10 @@ class dashboard(object):
         def proceed_bus_seating(location,time,busno):
             #confirmation = messagebox.askyesno("Confirmation", f"Selected Location: {location}\nTime: {time}\nProceed to Bus Seating?")
             show = bus_seating(dashboard_window, location, time,busno)
+        def proceed_passenger_table():
+            show = passenger_table(dashboard_window)
+        def proceed_ticket_table():
+            show = ticket_table(dashboard_window)
             
         con = sqlite3.connect('bus_ticket_DB.db')
         c = con.cursor()  
@@ -37,12 +44,21 @@ class dashboard(object):
 
         # create a menu
         bus_menu = Menu(menubar, tearoff=False)
-        report_menu = Menu(menubar)
+        passenger_menu = Menu(menubar, tearoff=False)
+        ticket_menu = Menu(menubar, tearoff=False)
 
         # add a menu item to the menu
         bus_menu.add_command(
             label='Bus Management',
             command=proceed_bus_management
+        )
+        passenger_menu.add_command(
+            label='Passenger Table',
+            command=proceed_passenger_table
+        )
+        ticket_menu.add_command(
+            label='Ticket Table',
+            command=proceed_ticket_table
         )
 
         # add the File menu to the menubar
@@ -50,23 +66,32 @@ class dashboard(object):
             label="Bus",
             menu=bus_menu
         )
+        menubar.add_cascade(
+            label="Passenger",
+            menu=passenger_menu
+        )
+        menubar.add_cascade(
+            label="Ticket",
+            menu=ticket_menu
+        )
+        
 
         frame = Frame(dashboard_window)
         frame.pack()
         
         labels = [
-            ("CATICLAN", 'white', 12),
-            ("KALIBO", 'white', 12),
-            ("ANTIQUE", 'white', 12),
-            ("CAPIZ", 'white', 12)
+            ("CATICLAN", 'black', 12),
+            ("KALIBO", 'black', 12),
+            ("ANTIQUE", 'black', 12),
+            ("CAPIZ", 'black', 12)
         ]
 
         for text, color, width in labels:
-            label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width, bg="#49A64C")
+            label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
             label.pack(side=LEFT, padx=50, pady=10)
 
 
-        caticlan_bottomframe = Frame(dashboard_window, bg="#49A64C")
+        caticlan_bottomframe = Frame(dashboard_window, bg="#ACCAD2")
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         c.execute("SELECT * FROM bus_details WHERE destination = 'Caticlan'")
@@ -74,11 +99,11 @@ class dashboard(object):
 
         if results_caticlan:
             for result in results_caticlan:
-                caticlan_bus_button = Button(caticlan_bottomframe, text=result[1] + " - " +result[6], bg="#FFBC12", width=35, height=3, command=lambda busno=result[1], bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
+                caticlan_bus_button = Button(caticlan_bottomframe,font=('Roboto', 12), text=result[1] + " - " +result[6], bg="#F5CB83", width=30, height=3, command=lambda busno=result[1], bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 caticlan_bus_button.pack(padx=10, pady=10)
         
 
-        kalibo_bottomframe = Frame(dashboard_window, bg="#49A64C")
+        kalibo_bottomframe = Frame(dashboard_window, bg="#ACCAD2")
         kalibo_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         c.execute("SELECT * FROM bus_details WHERE destination = 'Kalibo'")
@@ -86,10 +111,10 @@ class dashboard(object):
 
         if results_kalibo:
             for result in results_kalibo:
-                kalibo_bus_button = Button(kalibo_bottomframe, text=result[1] + " - " +result[6], bg="#FFBC12", width=35, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
+                kalibo_bus_button = Button(kalibo_bottomframe,font=('Roboto', 12),  text=result[1] + " - " +result[6], bg="#F5CB83", width=30, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 kalibo_bus_button.pack(padx=10, pady=10)
 
-        antique_bottomframe = Frame(dashboard_window, bg="#49A64C")
+        antique_bottomframe = Frame(dashboard_window, bg="#ACCAD2")
         antique_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
 
@@ -98,11 +123,11 @@ class dashboard(object):
 
         if results_antique:
             for result in results_antique:
-                antique_bus_button = Button(antique_bottomframe, text=result[1] + " - " +result[6], bg="#FFBC12", width=35, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
+                antique_bus_button = Button(antique_bottomframe,font=('Roboto', 12),  text=result[1] + " - " +result[6], bg="#F5CB83", width=30, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 antique_bus_button.pack(padx=10, pady=10)
 
 
-        capiz_bottomframe = Frame(dashboard_window, bg="#49A64C")
+        capiz_bottomframe = Frame(dashboard_window, bg="#ACCAD2")
         capiz_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         c.execute("SELECT * FROM bus_details WHERE destination = 'Capiz'")
@@ -110,7 +135,7 @@ class dashboard(object):
 
         if results_capiz:
             for result in results_capiz:
-                capiz_bus_button = Button(capiz_bottomframe, text=result[1] + " - " +result[6], bg="#FFBC12", width=35, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
+                capiz_bus_button = Button(capiz_bottomframe,font=('Roboto', 12),  text=result[1] + " - " +result[6], bg="#F5CB83", width=30, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 capiz_bus_button.pack(padx=10, pady=10)
 
         
