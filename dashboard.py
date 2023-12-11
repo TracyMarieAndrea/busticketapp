@@ -55,20 +55,20 @@ class dashboard(object):
         frame.pack()
         
         labels = [
-            ("CATICLAN", 'black', 12),
-            ("KALIBO", 'black', 12),
-            ("ANTIQUE", 'black', 12),
-            ("CAPIZ", 'black', 12)
+            ("CATICLAN", 'white', 12),
+            ("KALIBO", 'white', 12),
+            ("ANTIQUE", 'white', 12),
+            ("CAPIZ", 'white', 12)
         ]
 
         for text, color, width in labels:
-            label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
-            label.pack(side=LEFT, padx=10, pady=10)
+            label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width, bg="#49A64C")
+            label.pack(side=LEFT, padx=50, pady=10)
 
-        caticlan_bottomframe = Frame(dashboard_window)
+
+        caticlan_bottomframe = Frame(dashboard_window, bg="#49A64C")
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
-        
         c.execute("SELECT * FROM bus_details WHERE destination = 'Caticlan'")
         results_caticlan = c.fetchall()
 
@@ -78,7 +78,7 @@ class dashboard(object):
                 caticlan_bus_button.pack(padx=10, pady=10)
         
 
-        kalibo_bottomframe = Frame(dashboard_window)
+        kalibo_bottomframe = Frame(dashboard_window, bg="#49A64C")
         kalibo_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         c.execute("SELECT * FROM bus_details WHERE destination = 'Kalibo'")
@@ -89,7 +89,7 @@ class dashboard(object):
                 kalibo_bus_button = Button(kalibo_bottomframe, text=result[1] + " - " +result[6], bg="#FFBC12", width=35, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 kalibo_bus_button.pack(padx=10, pady=10)
 
-        antique_bottomframe = Frame(dashboard_window)
+        antique_bottomframe = Frame(dashboard_window, bg="#49A64C")
         antique_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
 
@@ -101,7 +101,8 @@ class dashboard(object):
                 antique_bus_button = Button(antique_bottomframe, text=result[1] + " - " +result[6], bg="#FFBC12", width=35, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 antique_bus_button.pack(padx=10, pady=10)
 
-        capiz_bottomframe = Frame(dashboard_window)
+
+        capiz_bottomframe = Frame(dashboard_window, bg="#49A64C")
         capiz_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
 
         c.execute("SELECT * FROM bus_details WHERE destination = 'Capiz'")
