@@ -52,7 +52,7 @@ class bus_seating(object):
 
             button_color = "#49A64C" if result is None else "#DD0A0A"
             
-            if(button_color == "green"):
+            if(button_color == "#49A64C"):
                 A_button = Button(bottomframe, bg=button_color, fg="white", text=seat_A, width=5,command=lambda s=seat_A: proceed_passenger_form(s, location, time,busno))
             else:
                 A_button = Button(bottomframe, bg=button_color, fg="white", text=seat_A, width=5)
@@ -78,7 +78,7 @@ class bus_seating(object):
 
             button_color = "#49A64C" if result is None else "#DD0A0A"
 
-            if(button_color == "green"):
+            if(button_color == "#49A64C"):
                 B_button = Button(bottomframe, bg=button_color, fg="white", text=seat_B, width=5,command=lambda s=seat_B: proceed_passenger_form(s, location, time,busno))
             else:
                 B_button = Button(bottomframe, bg=button_color, fg="white", text=seat_B, width=5)
@@ -103,7 +103,7 @@ class bus_seating(object):
 
             button_color = "#49A64C" if result is None else "#DD0A0A"
 
-            if(button_color == "green"):
+            if(button_color == "#49A64C"):
                 C_button = Button(bottomframe, bg=button_color, fg="white", text=seat_C, width=5,command=lambda s=seat_C: proceed_passenger_form(s, location, time,busno))
             else:
                 C_button = Button(bottomframe, bg=button_color, fg="white", text=seat_C, width=5)
@@ -128,7 +128,7 @@ class bus_seating(object):
 
             button_color = "#49A64C" if result is None else "#DD0A0A"
 
-            if(button_color == "green"):
+            if(button_color == "#49A64C" ):
                 D_button = Button(bottomframe, bg=button_color, fg="white", text=seat_D, width=5,command=lambda s=seat_D: proceed_passenger_form(s, location, time,busno))
             else:
                 D_button = Button(bottomframe, bg=button_color, fg="white", text=seat_D, width=5)
