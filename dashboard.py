@@ -74,6 +74,8 @@ class dashboard(object):
             label="Ticket",
             menu=ticket_menu
         )
+
+        
         
 
         frame = Frame(dashboard_window)
@@ -90,6 +92,8 @@ class dashboard(object):
             label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
             label.pack(side=LEFT, padx=50, pady=10)
 
+        reset_btn = tk.Button(dashboard_window,text='Reset')
+        reset_btn.pack()
 
         caticlan_bottomframe = Frame(dashboard_window, bg="#ACCAD2")
         caticlan_bottomframe.pack(expand=True, fill='both', padx=10, pady=10, side=LEFT)
