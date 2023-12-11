@@ -34,6 +34,7 @@ class dashboard(object):
             show = passenger_table(dashboard_window)
         def proceed_ticket_table():
             show = ticket_table(dashboard_window)
+        
             
         con = sqlite3.connect('bus_ticket_DB.db')
         c = con.cursor()  
