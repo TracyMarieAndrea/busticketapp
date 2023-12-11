@@ -13,6 +13,7 @@ class bus_management(object):
         bus_management_window.title('Bus Management')
         width = bus_management_window.winfo_screenwidth()
         height = bus_management_window.winfo_screenheight()
+        bus_management_window.configure(bg="#ACCAD2")
 
         bus_management_window.geometry("%dx%d" % (width, height))
 
@@ -86,7 +87,7 @@ class bus_management(object):
 
 
         #Welcome Text
-        welcome_label = tk.Label(bus_management_window,text="BUS MANAGEMENT",font=('Roboto', 35,'bold'),fg='black')
+        welcome_label = tk.Label(bus_management_window,text="BUS MANAGEMENT",font=('Roboto', 35,'bold'),fg='black',bg="#ACCAD2")
         welcome_label.pack(pady=15)
 
        
@@ -95,7 +96,7 @@ class bus_management(object):
             show = bus_details_form(bus_management_window)
 
         # Buttons in one row
-        button_frame = Frame(bus_management_window)
+        button_frame = Frame(bus_management_window,bg="#ACCAD2")
         button_frame.pack()
 
         add_button = tk.Button(button_frame, text="Add", command=addbus)
