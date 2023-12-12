@@ -31,8 +31,11 @@ def login():
     result = c.fetchone()
     
     if result:
+        username_entry.delete(0, 'end')
+        password_entry.delete(0, 'end')
         messagebox.showinfo(title="Login Successful!", message="You successfully logged in.")
         proceed_dashboard()
+        
     else:
         messagebox.showerror(title="Error", message="Invalid login.")
 
@@ -62,7 +65,7 @@ password_label.pack(pady=10)
 password_label.place(rely=0.50,relx=0.60)
 
 #Password Entry
-password_entry = tk.Entry(window)
+password_entry = tk.Entry(window,show="*")
 password_entry.pack(pady=10)
 password_entry.place(rely=0.55,relx=0.60,width=230,height=30)
 

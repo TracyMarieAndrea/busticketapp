@@ -10,7 +10,7 @@ import sqlite3
 class bus_seating(object):
 
     def __init__(self,window, location, time,busno):
-        window = tk.Tk()
+        window = tk.Toplevel()
         window.title('Bus Seating')
 
         width = window.winfo_screenwidth()
@@ -70,10 +70,6 @@ class bus_seating(object):
         bus_label_no.pack(side=tk.LEFT, pady=3)
         bus_no = tk.Label(plateNo_frame,text=busno,font=('Roboto', 20,),fg='black',bg="#ACCAD2")
         bus_no.pack(pady=10)
-
-        none_label = tk.Label(window,text="",font=('Roboto', 25,'bold'),fg='black',bg="#ACCAD2")
-        none_label.pack()
-
 
         bottomframe = Frame(window,bg="#ACCAD2")
         bottomframe.pack()
@@ -173,4 +169,13 @@ class bus_seating(object):
             D_button.pack( side = LEFT, padx=10, pady=10)  
         con.close()
 
+        img = Image.open("bus.png")
+        resized_image = img.resize((600, 250))
+        self.new_image = ImageTk.PhotoImage(resized_image)
+
+        # Create a label to display the image
+        image_label = tk.Label(window, image=self.new_image) 
+        image_label.pack()
+
+        
         window.mainloop()
