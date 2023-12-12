@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
-from PIL import Image,ImageTk
 from bus_management import bus_management
 from bus_details_form import bus_details_form
 from bus_seating import bus_seating
@@ -9,6 +8,7 @@ import sqlite3
 from passenger_details_table import passenger_table
 from ticket_table import ticket_table
 from tkinter import ttk
+from PIL import Image, ImageTk
 
 class dashboard(object):
 
@@ -78,11 +78,27 @@ class dashboard(object):
             menu=ticket_menu
         )
 
-        
-        
+        logo_frame = Frame(dashboard_window)
+        logo_frame.pack()
 
-        frame = Frame(dashboard_window)
-        frame.pack()
+        #Create a canvas
+        canvas= Canvas(logo_frame, width= 100, height= 200)
+        canvas.pack()
+        # canvas.place(rely=0.15,relx=0.10)
+
+        #Load an image in the script
+        img= (Image.open("Busbly.png"))
+
+        #Resize the Image using resize method
+        resized_image= img.resize((50,50))
+        new_image= ImageTk.PhotoImage(resized_image)
+
+        #Add image to the Canvas Items
+        img = canvas.create_image(10,10, anchor=NW, image=new_image)
+
+
+        location_frame = Frame(dashboard_window)
+        location_frame.pack()
         
         labels = [
             ("CATICLAN", 'black', 12),
@@ -92,7 +108,7 @@ class dashboard(object):
         ]
 
         for text, color, width in labels:
-            label = tk.Label(frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
+            label = tk.Label(location_frame, text=text, font=('Roboto', 25, 'bold'), fg=color, width=width)
             label.pack(side=LEFT, padx=50, pady=10)
 
         #reset_btn = tk.Button(dashboard_window,text='Reset',command=clear_data)
@@ -144,8 +160,7 @@ class dashboard(object):
             for result in results_capiz:
                 capiz_bus_button = Button(capiz_bottomframe,font=('Roboto', 12),  text=result[1] + " - " +result[6], bg="#F5CB83", width=30, height=3, command=lambda busno=result[1],bustime=result[6], busname=result[5]: proceed_bus_seating(busname,bustime,busno))
                 capiz_bus_button.pack(padx=10, pady=10)
-
-        
+    
 
         con.close()
-        window.mainloop()
+        dashboard_window.mainloop()
